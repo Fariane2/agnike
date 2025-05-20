@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Nos Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db; /* Fond bleu-gris foncé */
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important; /* Blanc légèrement cassé */
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db; /* Survol plus visible */
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934; /* Bordure bleue vive */
+            background: #3498db; /* Fond bleu très subtil */
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50; /* Couleur correspondant au fond du menu */
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db; /* Changement de couleur au survol */
+        }
+
+        /* Adaptation de la navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important; /* Couleur du texte principal */
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important; /* Bleu au survol */
+            text-decoration: none;
+        }
+
+        /* Effet de soulignement animé */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Couleurs thématiques */
+        :root {
+            --primary-color: #0086a7; /* Rouge bordeaux */
+            --secondary-color: #685ca9; /* Vert doux */
+            --accent-color: #e7e5e7; /* Gris clair */
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header avec bande coulissante */
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            color: #ddd;
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: #3498db;
+        }
+        
+        .logo {
+            color: rgb(255, 255, 255);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        /* Section Services Principaux */
+        .main-services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 3px solid #3498db;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .service-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-category {
+            color: #3498db;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            margin-bottom: 25px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .feature-item i {
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-service {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-service:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Section Services Spécialisés */
+        .specialized-services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .specialized-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .specialized-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .specialized-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .specialized-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .specialized-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .specialized-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .specialized-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Section Pourquoi Nous Choisir */
+        .why-choose {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .why-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .why-card {
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .why-card:hover h3,
+        .why-card:hover p,
+        .why-card:hover i {
+            color: white;
+        }
+        
+        .why-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .why-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .why-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid, .specialized-grid, .why-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html" class="active">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Nos Services Professionnels</h1>
+        <ul class="breadcrumb">
+            <li><a href="index.html">Accueil</a></li>
+            <li>Services</li>
+        </ul>
+    </header>
+    
+    <!-- Section Services Principaux -->
+    <section class="main-services">
+        <div class="container">
+            <h2 class="section-title">Nos Services Clés</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+                SOGETEC propose une gamme complète de services professionnels dans les domaines du génie électrique, 
+                des technologies avancées et de la sécurité incendie. Découvrez nos solutions sur mesure adaptées 
+                à vos besoins spécifiques.
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Génie Electrique">
+                    </div>
+                    <div class="service-content">
+                        <span class="service-category">INGÉNIERIE ÉLECTRIQUE</span>
+                        <h3 class="service-title">Génie Electrique</h3>
+                        <p class="service-description">
+                            Conception et installation de systèmes électriques performants et sécurisés pour tous types 
+                            de bâtiments et infrastructures industrielles.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Études et conception électrique
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Installation et câblage
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Mise en service et tests
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Maintenance préventive
+                            </div>
+                        </div>
+                        <a href="#" class="btn-service">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Technologies">
+                    </div>
+                    <div class="service-content">
+                        <span class="service-category">SOLUTIONS INNOVANTES</span>
+                        <h3 class="service-title">Technologies Avancées</h3>
+                        <p class="service-description">
+                            Intégration de solutions technologiques innovantes pour l'automatisation, la domotique 
+                            et le contrôle industriel.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Automatisation industrielle
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Systèmes domotiques
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Contrôle et supervision
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Solutions IoT
+                            </div>
+                        </div>
+                        <a href="#" class="btn-service">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f2f8d6d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sécurité Incendie">
+                    </div>
+                    <div class="service-content">
+                        <span class="service-category">PROTECTION ET SÉCURITÉ</span>
+                        <h3 class="service-title">Sécurité Incendie</h3>
+                        <p class="service-description">
+                            Systèmes complets de détection et protection contre les incendies conformes aux normes 
+                            les plus strictes pour garantir la sécurité des personnes et des biens.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Détection incendie
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Systèmes d'extinction
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Éclairage de sécurité
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i> Maintenance réglementaire
+                            </div>
+                        </div>
+                        <a href="#" class="btn-service">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Services Spécialisés -->
+    <section class="specialized-services">
+        <div class="specialized-container">
+            <h2 class="section-title">Services Spécialisés</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+                En complément de nos services principaux, nous proposons des solutions spécialisées pour répondre 
+                aux besoins spécifiques de nos clients.
+            </p>
+            
+            <div class="specialized-grid">
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3 class="specialized-title">Énergies Renouvelables</h3>
+                    <p class="specialized-description">
+                        Installation et maintenance de systèmes solaires photovoltaïques pour une production d'énergie propre et économique.
+                    </p>
+                </div>
+                
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="specialized-title">Groupes Électrogènes</h3>
+                    <p class="specialized-description">
+                        Installation et maintenance de groupes électrogènes pour assurer la continuité de l'alimentation électrique.
+                    </p>
+                </div>
+                
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="specialized-title">Vidéosurveillance</h3>
+                    <p class="specialized-description">
+                        Systèmes de vidéosurveillance intelligents pour la sécurité et le monitoring de vos installations.
+                    </p>
+                </div>
+                
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="specialized-title">Réseaux & Télécom</h3>
+                    <p class="specialized-description">
+                        Conception et déploiement d'infrastructures réseaux et télécoms performantes et sécurisées.
+                    </p>
+                </div>
+                
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-charging-station"></i>
+                    </div>
+                    <h3 class="specialized-title">Bornes de Recharge</h3>
+                    <p class="specialized-description">
+                        Installation de bornes de recharge pour véhicules électriques dans les entreprises et lieux publics.
+                    </p>
+                </div>
+                
+                <div class="specialized-item">
+                    <div class="specialized-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="specialized-title">Maintenance Industrielle</h3>
+                    <p class="specialized-description">
+                        Contrats de maintenance préventive et corrective pour garantir la performance de vos installations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Pourquoi Nous Choisir -->
+    <section class="why-choose">
+        <div class="why-container">
+            <h2 class="section-title">Pourquoi Choisir SOGETEC ?</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+                Notre engagement envers l'excellence et la satisfaction client fait de nous le partenaire idéal 
+                pour tous vos projets en génie électrique et technologies.
+            </p>
+            
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="why-title">Expertise Certifiée</h3>
+                    <p class="why-description">
+                        Nos équipes sont certifiées et formées aux dernières technologies et normes en vigueur dans 
+                        nos domaines d'intervention.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="why-title">Approche Client</h3>
+                    <p class="why-description">
+                        Une écoute attentive de vos besoins et une collaboration étroite pour développer des solutions 
+                        parfaitement adaptées.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="why-title">Réactivité</h3>
+                    <p class="why-description">
+                        Intervention rapide et efficace avec des délais d'exécution optimisés pour répondre à vos 
+                        urgences et contraintes.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="why-title">Qualité Garantie</h3>
+                    <p class="why-description">
+                        Utilisation de matériaux et équipements de haute qualité, associée à des procédures de contrôle 
+                        rigoureuses.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="why-title">Rapport Qualité/Prix</h3>
+                    <p class="why-description">
+                        Des solutions performantes à des prix compétitifs grâce à notre expertise et à nos partenariats 
+                        avec les meilleurs fournisseurs.
+                    </p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="why-title">Support Continu</h3>
+                    <p class="why-description">
+                        Un service après-vente disponible et réactif pour assurer le bon fonctionnement de vos 
+                        installations dans la durée.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre fournisseur de matériel électronique professionnel depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="services.html">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

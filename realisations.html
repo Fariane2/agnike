@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Nos Réalisations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db;
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important;
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db;
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934;
+            background: #3498db;
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50;
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db;
+        }
+
+        /* Navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important;
+            text-decoration: none;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        :root {
+            --primary-color: #0086a7;
+            --secondary-color: #685ca9;
+            --accent-color: #e7e5e7;
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header */
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            color: #ddd;
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: #3498db;
+        }
+        
+        .logo {
+            color: rgb(255, 255, 255);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        /* Filtres */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Grille des réalisations */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(52, 152, 219, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-category {
+            color: white;
+            background-color: #3498db;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-link i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-link:hover {
+            color: #f8f9fa;
+        }
+        
+        .portfolio-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Statistiques */
+        .stats-section {
+            background-color: #3498db;
+            color: white;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Témoignages */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-item {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid #3498db;
+        }
+        
+        .client-quote {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .client-name {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+        
+        .client-position {
+            color: #3498db;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .cta-text {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #3498db;
+        }
+        
+        .cta-btn:hover {
+            background-color: transparent;
+            color: #3498db;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html" class="active">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Nos Réalisations</h1>
+        <ul class="breadcrumb">
+            <li><a href="index.html">Accueil</a></li>
+            <li>Réalisations</li>
+        </ul>
+    </header>
+    
+    <main class="container">
+        <h2 class="section-title">Nos Projets Réalisés</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+            Découvrez une sélection de nos projets récents dans les domaines du génie électrique, 
+            des technologies avancées et de la sécurité incendie.
+        </p>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="electrique">Génie Électrique</button>
+            <button class="filter-btn" data-filter="technologie">Technologies</button>
+            <button class="filter-btn" data-filter="securite">Sécurité Incendie</button>
+            <button class="filter-btn" data-filter="industrie">Industrie</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- Projet 1 -->
+            <div class="portfolio-item" data-category="electrique industrie">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Centrale électrique">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Génie Électrique</span>
+                    <h3 class="portfolio-title">Centrale Électrique Industrielle</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Projet 2 -->
+            <div class="portfolio-item" data-category="technologie">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Système domotique">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Technologies</span>
+                    <h3 class="portfolio-title">Système Domotique Résidentiel</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Projet 3 -->
+            <div class="portfolio-item" data-category="securite industrie">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1581093057305-25a0a6b9f46c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sécurité incendie">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Sécurité Incendie</span>
+                    <h3 class="portfolio-title">Installation Sécurité Usine</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Projet 4 -->
+            <div class="portfolio-item" data-category="electrique">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Installation électrique">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Génie Électrique</span>
+                    <h3 class="portfolio-title">Bâtiment Commercial</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Projet 5 -->
+            <div class="portfolio-item" data-category="technologie industrie">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Automatisation industrielle">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Technologies</span>
+                    <h3 class="portfolio-title">Automatisation Industrielle</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Projet 6 -->
+            <div class="portfolio-item" data-category="securite">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2f8d6d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Détection incendie">
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Sécurité Incendie</span>
+                    <h3 class="portfolio-title">Système de Détection Hôtelier</h3>
+                    <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Section Statistiques -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Projets Réalisés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Années d'Expérience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Experts Techniques</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Témoignages -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-avatar">
+                    <p class="client-quote">
+                        "SOGETEC a réalisé l'installation électrique de notre usine dans les délais et avec un 
+                        professionnalisme remarquable. Leur expertise technique et leur réactivité ont fait 
+                        toute la différence."
+                    </p>
+                    <h4 class="client-name">Jean Dupont</h4>
+                    <p class="client-position">Directeur Industriel, ABC Industries</p>
+                </div>
+                
+                <div class="testimonial-item">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="client-avatar">
+                    <p class="client-quote">
+                        "Le système de sécurité incendie installé par SOGETEC dans notre complexe hôtelier 
+                        est d'une fiabilité exceptionnelle. Leur service après-vente est également très réactif."
+                    </p>
+                    <h4 class="client-name">Marie Lambert</h4>
+                    <p class="client-position">Gérante, Hôtel Belle Vue</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Prêt à Lancer Votre Projet ?</h2>
+            <p class="cta-text">
+                Notre équipe d'experts est à votre disposition pour étudier vos besoins et vous proposer 
+                la solution la plus adaptée à vos exigences techniques et budgétaires.
+            </p>
+            <a href="contact.html" class="cta-btn">Contactez-nous</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre fournisseur de matériel électronique professionnel depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="services.html">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtrage des projets
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Retire la classe active de tous les boutons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    // Ajoute la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

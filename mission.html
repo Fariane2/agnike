@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Notre Mission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db; /* Fond bleu-gris foncé */
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important; /* Blanc légèrement cassé */
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db; /* Survol plus visible */
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934; /* Bordure bleue vive */
+            background: #3498db; /* Fond bleu très subtil */
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50; /* Couleur correspondant au fond du menu */
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db; /* Changement de couleur au survol */
+        }
+
+        /* Adaptation de la navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important; /* Couleur du texte principal */
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important; /* Bleu au survol */
+            text-decoration: none;
+        }
+
+        /* Effet de soulignement animé */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Couleurs thématiques */
+        :root {
+            --primary-color: #0086a7; /* Rouge bordeaux */
+            --secondary-color: #685ca9; /* Vert doux */
+            --accent-color: #e7e5e7; /* Gris clair */
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header avec bande coulissante */
+        .mission-header {
+            position: relative;
+            color: #f5f5f5;
+            height: 400px;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .mission-header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .mission-header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: rgba(52, 152, 219, 0.9);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #e7e5e7;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #e7e5e7;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #e7e5e7;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Section Mission */
+        .mission-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .mission-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .mission-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .mission-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .mission-text {
+            text-align: justify;
+        }
+        
+        .mission-text h3 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .mission-text p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .mission-values {
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .value-text h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .value-text p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .mission-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .mission-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Section Engagement */
+        .engagement-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .engagement-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .engagement-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .engagement-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .engagement-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 3px solid #3498db;
+        }
+        
+        .engagement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .engagement-card h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .engagement-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #e7e5e7;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e7e5e7;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #e7e5e7;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e7e5e7;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-image {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mission-header {
+                height: 350px;
+            }
+            
+            .mission-header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mission-header-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .engagement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-title, .engagement-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="mission-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html" class="active">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="mission-header-content">
+            <h1>Notre Mission</h1>
+            <p>Découvrez les fondements de notre engagement et notre raison d'être</p>
+            <a href="#mission" class="btn">En savoir plus</a>
+        </div>
+    </header>
+    
+    <!-- Section Mission -->
+    <section class="mission-section" id="mission">
+        <div class="mission-container">
+            <h2 class="mission-title">NOTRE MISSION</h2>
+            
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h3>Transformer les défis technologiques en solutions durables</h3>
+                    <p>Depuis sa création, SOGETEC s'est donné pour mission de fournir des solutions technologiques innovantes et durables répondant aux besoins spécifiques de nos clients dans les domaines du génie électrique, des technologies avancées et de la sécurité incendie.</p>
+                    
+                    <p>Notre engagement va au-delà de la simple fourniture de matériel ou de services. Nous nous efforçons de comprendre en profondeur les défis de nos clients pour leur proposer des solutions sur mesure qui optimisent leurs opérations, améliorent leur efficacité et garantissent leur sécurité.</p>
+                    
+                    <p>Nous croyons fermement que la technologie, lorsqu'elle est bien maîtrisée et correctement appliquée, peut être un puissant levier de développement économique et social. C'est pourquoi nous nous engageons à rendre les technologies avancées accessibles et compréhensibles pour tous nos clients.</p>
+                    
+                    <div class="mission-values">
+                        <h3>Nos Valeurs Fondamentales</h3>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="value-text">
+                                <h4>Innovation</h4>
+                                <p>Nous cultivons une culture d'innovation permanente pour anticiper les besoins futurs et proposer des solutions avant-gardistes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="value-text">
+                                <h4>Intégrité</h4>
+                                <p>Nous menons nos activités avec la plus grande intégrité, en respectant les plus hauts standards éthiques et professionnels.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="value-text">
+                                <h4>Collaboration</h4>
+                                <p>Nous croyons au pouvoir du travail d'équipe et à la valeur des partenariats stratégiques pour créer des solutions optimales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Équipe SOGETEC en réunion">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Engagement -->
+    <section class="engagement-section">
+        <div class="engagement-container">
+            <h2 class="engagement-title">NOS ENGAGEMENTS</h2>
+            
+            <div class="engagement-grid">
+                <div class="engagement-card">
+                    <h3>Qualité Inégalée</h3>
+                    <p>Nous nous engageons à fournir des produits et services de la plus haute qualité, en sélectionnant rigoureusement nos fournisseurs et en contrôlant systématiquement nos réalisations. Chaque projet bénéficie de notre expertise et de notre souci du détail.</p>
+                </div>
+                
+                <div class="engagement-card">
+                    <h3>Satisfaction Client</h3>
+                    <p>La satisfaction de nos clients est au cœur de notre mission. Nous écoutons attentivement leurs besoins, proposons des solutions adaptées et assurons un suivi personnalisé pour garantir leur entière satisfaction tout au long de notre collaboration.</p>
+                </div>
+                
+                <div class="engagement-card">
+                    <h3>Développement Durable</h3>
+                    <p>Conscients de notre responsabilité environnementale, nous intégrons des principes de durabilité dans toutes nos activités. Nous promouvons des solutions énergétiquement efficaces et respectueuses de l'environnement.</p>
+                </div>
+                
+                <div class="engagement-card">
+                    <h3>Innovation Continue</h3>
+                    <p>Nous investissons continuellement dans la recherche et le développement pour maintenir notre position à la pointe des technologies. Notre équipe se forme en permanence aux dernières avancées du secteur.</p>
+                </div>
+                
+                <div class="engagement-card">
+                    <h3>Sécurité Maximale</h3>
+                    <p>La sécurité de nos clients, de leurs équipements et de nos collaborateurs est une priorité absolue. Nous concevons et mettons en œuvre des solutions qui répondent aux normes de sécurité les plus strictes.</p>
+                </div>
+                
+                <div class="engagement-card">
+                    <h3>Approche Personnalisée</h3>
+                    <p>Chaque client est unique. Nous prenons le temps de comprendre vos spécificités pour développer des solutions sur mesure qui répondent parfaitement à vos besoins et objectifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre partenaire technologique de confiance depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="services.html">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

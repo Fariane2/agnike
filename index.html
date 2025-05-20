@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Matériel Électronique Professionnel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #3498db; /* Fond bleu-gris foncé */
+    min-width: 250px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+         }
+
+      .dropdown:hover .dropdown-menu {
+    max-height: 500px;
+    padding: 15px 0;
+}
+
+     .dropdown-menu li {
+    padding: 0;
+}
+
+     .dropdown-menu a {
+    color: #f8f9fa !important; /* Blanc légèrement cassé */
+    padding: 12px 25px !important;
+    display: block !important;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+    .dropdown-menu a:hover {
+    background: #3498db; /* Survol plus visible */
+    padding-left: 30px !important;
+    color: #ffffff !important;
+}
+
+    .dropdown-menu a.active {
+    border-left: 4px solid #db6934; /* Bordure bleue vive */
+    background: #3498db; /* Fond bleu très subtil */
+}
+
+    .dropdown > a::after {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 8px;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+    color: #2c3e50; /* Couleur correspondant au fond du menu */
+}
+
+    .dropdown:hover > a::after {
+    transform: rotate(180deg);
+    color: #3498db; /* Changement de couleur au survol */
+}
+
+     /* Adaptation de la navigation principale */
+.nav-links li {
+    margin-left: 25px;
+    position: relative;
+}
+
+.nav-links li a {
+    color: #D35400 !important; /* Couleur du texte principal */
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: #D35400 !important; /* Bleu au survol */
+    text-decoration: none;
+}
+
+/* Effet de soulignement animé */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+        
+        body {
+            background-color: #3498db;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Couleurs thématiques */
+        :root {
+            --primary-color: #0086a7; /* Rouge bordeaux */
+            --secondary-color: #685ca9; /* Vert doux */
+            --accent-color: #e7e5e7; /* Gris clair */
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header avec bande coulissante */
+        header {
+            position: relative;
+            color: #f5f5f5;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            animation: slide 15s infinite; /* Vitesse réduite (15s au lieu de 30s) */
+        }
+        
+        .slide {
+            width: 150%;
+            height: 200%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 0 20%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+        
+        .slide1 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,0.1)), url(/img/images\ \(1\).png);
+        }
+        
+        .slide2 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,0.1)), url(/img/images\ \(2\).png);
+        }
+        
+        .slide3 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,0.1)), url(/img/images\ \(3\).jpeg);
+        }
+        .slide4 {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,0.1)), url(/img/images\ \(4\).jpeg);
+        }
+
+        /* Style pour le lien de connexion */
+        .login-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+            color: rgb(255, 255, 255);
+        }
+
+        .login-link:hover {
+            background-color: #3498db;
+            color:rgb(255, 255, 255); 
+        }
+
+        .login-link i {
+            font-size: 0.9rem;
+        }
+
+        /* Amélioration des images des services */
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+            margin-right: 20px;
+            background-color:#3498db;
+            padding: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover .service-icon img {
+            transform: scale(1.05);
+        }
+
+        /* Amélioration des images des produits */
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-img img {
+            width: auto;
+            max-width: 90%;
+            height: auto;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+
+        /* Amélioration des logos partenaires */
+        .partner-logo {
+            height: 100px;
+            width: 180px;
+            margin: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3498db;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        .partner-logo img {
+            max-height: 70px;
+            max-width: 150px;
+            width: auto;
+            height: auto;
+            filter: grayscale(30%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .slide-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #8c0019;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #8c0019;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(167, 0, 30, 0.3);
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            30% { transform: translateX(0); } /* Temps d'affichage augmenté */
+            33% { transform: translateX(-100%); }
+            63% { transform: translateX(-100%); } /* Temps d'affichage augmenté */
+            66% { transform: translateX(-200%); }
+            97% { transform: translateX(-200%); } /* Temps d'affichage augmenté */
+            100% { transform: translateX(0); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: #3498db;
+        }
+        
+        .logo {
+            color: rgb(255, 255, 255);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Section Nos Services */
+        .services-section {
+            background-color: #3498db;
+            padding: 80px 0;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .services-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color:#D35400 ;
+            position: relative;
+        }
+        
+        .services-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .service-item {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #3498db; /* Fond légèrement orangé très subtil */
+    box-shadow: 0 5px 15px rgba(255,107,53,0.08); /* Ombre orange légère */
+    transition: all 0.3s ease;
+    border-top: 3px solid #FF6B35; /* Orange vif */
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255,107,53,0.15); /* Ombre orange plus prononcée */
+    background-color: #3498db;
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #FF9B70; /* Orange plus clair et doux */
+    margin-right: 20px;
+    background: #3498db; /* Fond orange très pâle */
+}
+
+.service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.2) saturate(1.2); /* Teinte légèrement orangée */
+}
+
+.service-title {
+    font-size: 1.3rem;
+    color: #D35400; /* Orange foncé */
+    margin: 0;
+}
+
+.service-description {
+    color: #5a5a5a; /* Gris chaud */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color:#3498db;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 3px solid #FF9B70;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        /* Section Partenaires */
+        .partners-section {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            margin-top: 50px;
+            border-top: 3px solid #FF9B70;
+            border-bottom: 3px solid #FF9B70;
+        }
+        
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .partners-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+        
+        .partners-slider {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            height: 120px;
+        }
+        .partners-track {
+            display: flex;
+            animation: scroll 40s linear infinite; /* Vitesse réduite (40s au lieu de 20s) */
+            width: calc(200px * 10);
+        }
+        
+        .partner-logo {
+            height: 80px;
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .partner-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 5)); }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .partners-track {
+                animation: scroll 30s linear infinite; /* Vitesse réduite pour mobile */
+            }
+            
+            .partner-logo {
+                height: 60px;
+                margin: 0 20px;
+            }
+
+            /* Responsive pour le lien de connexion */
+            .login-link span {
+                display: none;
+            }
+            
+            .login-link {
+                padding: 8px 12px;
+            }
+            
+            .login-link i {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html" class="active">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="slider">
+            <div class="slide slide1">
+                <div class="slide-content">
+                    <h1>Matériel Électronique Professionnel</h1>
+                    <p>Découvrez notre gamme complète de composants et équipements électroniques de haute qualité</p>
+                    <a href="#" class="btn">Voir nos produits</a>
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="slide-content">
+                    <h1>Solutions Technologiques Innovantes</h1>
+                    <p>Des solutions sur mesure pour vos projets les plus ambitieux</p>
+                    <a href="#" class="btn">Nos solutions</a>
+                </div>
+            </div>
+            <div class="slide slide3">
+                <div class="slide-content">
+                    <h1>Expertise Technique Inégalée</h1>
+                    <p>Notre équipe d'experts est à votre disposition pour vous conseiller</p>
+                    <a href="#" class="btn">Contactez-nous</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Section Nos Services -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="services-title">NOS SERVICES</h2>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Génie Electrique">
+                        </div>
+                        <h3 class="service-title">Génie Electrique</h3>
+                    </div>
+                    <p class="service-description">
+                        Conception et installation de systèmes électriques pour bâtiments industriels et résidentiels. 
+                        Nous offrons des solutions complètes d'électricité générale, de distribution et de protection.
+                    </p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Technologies">
+                        </div>
+                        <h3 class="service-title">Technologies</h3>
+                    </div>
+                    <p class="service-description">
+                        Développement et intégration de solutions technologiques avancées : automatisation, domotique, 
+                        systèmes de contrôle et instrumentation. Nous transformons vos idées en solutions concrètes.
+                    </p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="https://images.unsplash.com/photo-1581092921461-39b2f2f8d6d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Sécurité incendie">
+                        </div>
+                        <h3 class="service-title">Sécurité incendie</h3>
+                    </div>
+                    <p class="service-description">
+                        Systèmes complets de détection et protection contre les incendies. Installation et maintenance 
+                        d'équipements conformes aux normes en vigueur pour garantir la sécurité de vos biens et personnes.
+                    </p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Vente de matériels">
+                        </div>
+                        <h3 class="service-title">Vente de matériels</h3>
+                    </div>
+                    <p class="service-description">
+                        Distribution de matériel électrique et électronique professionnel. Composants, outils, 
+                        équipements de test et de mesure des plus grandes marques à des prix compétitifs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <main class="container">
+        <h2 class="section-title">NOS REALISATIONS</h2>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Carte électronique">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Composants</span>
+                    <h3 class="product-title">Carte Arduino Uno</h3>
+                    <p class="product-description">La carte Arduino idéale pour vos projets électroniques, avec microcontrôleur ATmega328P.</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Oscilloscope">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Instrumentation</span>
+                    <h3 class="product-title">Oscilloscope Numérique</h3>
+                    <p class="product-description">Oscilloscope 100 MHz, 4 canaux avec écran LCD 7 pouces et fonctions avancées.</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80&fit=max" alt="Alimentation">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Alimentations</span>
+                    <h3 class="product-title">Alimentation Régulée</h3>
+                    <p class="product-description">Alimentation DC régulée 0-30V / 0-5A avec affichage numérique et protection.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Section Partenaires et Sponsors -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <h2 class="partners-title">NOS PARTENAIRES</h2>
+            <div class="partners-slider">
+                <div class="partners-track">
+                    <!-- Logos réels de haute qualité -->
+                    <div class="partner-logo">
+                        <img src="https://www.bing.com/images/search?view=detailV2&ccid=08pbRxr6&id=9B5B3844C1DC25FD8BE91E497318DD0ABBACA562&thid=OIP.08pbRxr6BpSE6zsBpVVN_wHaFj&mediaurl=https%3a%2f%2fstatic.vecteezy.com%2fsystem%2fresources%2fpreviews%2f009%2f469%2f637%2foriginal%2fpaypal-payment-icon-editorial-logo-free-vector.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.d3ca5b471afa069484eb3b01a5554dff%3frik%3dYqWsuwrdGHNJHg%26pid%3dImgRaw%26r%3d0&exph=1440&expw=1920&q=PayPal+Logo&simid=608025099389074477&FORM=IRPRST&ck=B7398AB0D1522FC4377865305DC7C512&selectedIndex=0&itb=0" alt="Arduino">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" alt="Raspberry Pi">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png" alt="Nike">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
+                    </div>
+                    <!-- Répétition pour l'effet de boucle continu -->
+                    <div class="partner-logo">
+                        <img src="https://www.bing.com/images/search?view=detailV2&ccid=08pbRxr6&id=9B5B3844C1DC25FD8BE91E497318DD0ABBACA562&thid=OIP.08pbRxr6BpSE6zsBpVVN_wHaFj&mediaurl=https%3a%2f%2fstatic.vecteezy.com%2fsystem%2fresources%2fpreviews%2f009%2f469%2f637%2foriginal%2fpaypal-payment-icon-editorial-logo-free-vector.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.d3ca5b471afa069484eb3b01a5554dff%3frik%3dYqWsuwrdGHNJHg%26pid%3dImgRaw%26r%3d0&exph=1440&expw=1920&q=PayPal+Logo&simid=608025099389074477&FORM=IRPRST&ck=B7398AB0D1522FC4377865305DC7C512&selectedIndex=0&itb=0" alt="Arduino">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Raspberry_Pi_logo.svg/1200px-Raspberry_Pi_logo.svg.png" alt="Raspberry Pi">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png" alt="Nike">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre fournisseur de matériel électronique professionnel depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="#">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

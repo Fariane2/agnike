@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Notre Stratégie et Force</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db; /* Fond bleu-gris foncé */
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important; /* Blanc légèrement cassé */
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db; /* Survol plus visible */
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934; /* Bordure bleue vive */
+            background: #3498db; /* Fond bleu très subtil */
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50; /* Couleur correspondant au fond du menu */
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db; /* Changement de couleur au survol */
+        }
+
+        /* Adaptation de la navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important; /* Couleur du texte principal */
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important; /* Bleu au survol */
+            text-decoration: none;
+        }
+
+        /* Effet de soulignement animé */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Couleurs thématiques */
+        :root {
+            --primary-color: #0086a7; /* Rouge bordeaux */
+            --secondary-color: #685ca9; /* Vert doux */
+            --accent-color: #e7e5e7; /* Gris clair */
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header avec bande coulissante */
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            color: #ddd;
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: #3498db;
+        }
+        
+        .logo {
+            color: rgb(255, 255, 255);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        /* Section Stratégie */
+        .strategy-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .strategy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .strategy-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 3px solid #3498db;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .strategy-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .strategy-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .strategy-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Section Forces */
+        .strengths-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .strengths-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .strength-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .strength-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .strength-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .strength-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Section Approche */
+        .approach-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .approach-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .approach-steps {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .approach-steps:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 30px;
+            height: 100%;
+            width: 3px;
+            background-color: #3498db;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 30px;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        
+        .step-content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            flex-grow: 1;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .strategy-grid, .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .strength-item {
+                flex-direction: column;
+            }
+            
+            .strength-icon {
+                margin-bottom: 15px;
+            }
+            
+            .approach-steps:before {
+                left: 30px;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html" class="active">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Notre Stratégie et Force</h1>
+        <ul class="breadcrumb">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="présentation.html">SOGETEC SA</a></li>
+            <li>Stratégie</li>
+        </ul>
+    </header>
+    
+    <!-- Section Stratégie -->
+    <section class="strategy-section">
+        <div class="strategy-container">
+            <h2 class="section-title">Notre Stratégie</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+                Chez SOGETEC, notre stratégie repose sur une approche intégrée combinant innovation technologique, 
+                excellence opérationnelle et engagement client. Nous nous adaptons en permanence aux évolutions 
+                du marché pour offrir des solutions toujours plus performantes.
+            </p>
+            
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="strategy-title">Orientation Client</h3>
+                    <p class="strategy-description">
+                        Nous plaçons nos clients au cœur de notre stratégie en développant des solutions sur mesure 
+                        qui répondent précisément à leurs besoins spécifiques. Notre approche collaborative garantit 
+                        une parfaite adéquation entre nos services et vos exigences.
+                    </p>
+                </div>
+                
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="strategy-title">Innovation Technologique</h3>
+                    <p class="strategy-description">
+                        L'innovation est notre moteur. Nous investissons continuellement dans la R&D et formons nos 
+                        équipes aux dernières technologies pour vous proposer des solutions avant-gardistes et 
+                        compétitives sur le marché.
+                    </p>
+                </div>
+                
+                <div class="strategy-card">
+                    <div class="strategy-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="strategy-title">Croissance Durable</h3>
+                    <p class="strategy-description">
+                        Notre croissance s'appuie sur un développement responsable et durable. Nous diversifions 
+                        nos activités tout en maintenant notre excellence opérationnelle et notre engagement 
+                        envers la qualité et la satisfaction client.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Forces -->
+    <section class="strengths-section">
+        <div class="strengths-container">
+            <h2 class="section-title">Nos Forces Compétitives</h2>
+            
+            <div class="strengths-grid">
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Expertise Technique</h3>
+                        <p>
+                            Une équipe d'experts hautement qualifiés avec des compétences pointues dans les domaines 
+                            du génie électrique, des technologies avancées et de la sécurité incendie.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Qualité Certifiée</h3>
+                        <p>
+                            Tous nos processus et solutions sont conformes aux normes internationales les plus 
+                            strictes, avec des certifications qui attestent de notre engagement qualité.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Réseau Partenaires</h3>
+                        <p>
+                            Un réseau étendu de partenaires technologiques de premier plan nous permet d'accéder 
+                            aux innovations et solutions les plus récentes sur le marché.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Support Client</h3>
+                        <p>
+                            Un service client réactif et disponible 24/7 pour assurer un support technique 
+                            immédiat et une assistance personnalisée à chaque étape de votre projet.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Équipements Modernes</h3>
+                        <p>
+                            Des outils et équipements de dernière génération pour garantir des interventions 
+                            rapides, précises et conformes aux meilleures pratiques du secteur.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="strength-content">
+                        <h3>Références Solides</h3>
+                        <p>
+                            Plus de 15 ans d'expérience et des centaines de projets réussis pour des clients 
+                            prestigieux dans divers secteurs d'activité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Approche -->
+    <section class="approach-section">
+        <div class="approach-container">
+            <h2 class="section-title">Notre Approche Méthodologique</h2>
+            
+            <div class="approach-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Analyse des Besoins</h3>
+                        <p>
+                            Nous commençons par une écoute attentive de vos besoins et une analyse approfondie 
+                            de votre contexte opérationnel pour bien comprendre vos défis et objectifs.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Conception sur Mesure</h3>
+                        <p>
+                            Nos ingénieurs développent une solution personnalisée qui intègre les meilleures 
+                            technologies tout en respectant vos contraintes budgétaires et temporelles.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Validation Collaborative</h3>
+                        <p>
+                            Nous présentons notre proposition et l'ajustons en collaboration avec vous pour 
+                            garantir qu'elle répond parfaitement à vos attentes avant toute mise en œuvre.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Mise en Œuvre Professionnelle</h3>
+                        <p>
+                            Nos équipes certifiées déploient la solution avec rigueur et professionnalisme, 
+                            en respectant les délais convenus et les normes de qualité les plus strictes.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Support Continu</h3>
+                        <p>
+                            Nous assurons un suivi post-projet et une maintenance proactive pour garantir la 
+                            performance durable de nos solutions et votre satisfaction à long terme.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre fournisseur de matériel électronique professionnel depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="services.html">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Contactez-nous</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db;
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important;
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db;
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934;
+            background: #3498db;
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50;
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db;
+        }
+
+        /* Navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important;
+            text-decoration: none;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        :root {
+            --primary-color: #0086a7;
+            --secondary-color: #685ca9;
+            --accent-color: #e7e5e7;
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header */
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            color: #ddd;
+        }
+        
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+        
+        .breadcrumb a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #3498db;
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: #3498db;
+        }
+        
+        .logo {
+            color: rgb(255, 255, 255);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        /* Section Contact */
+        .contact-section {
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .info-content p, .info-content a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-content a:hover {
+            color: #3498db;
+        }
+        
+        .social-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-contact a {
+            width: 40px;
+            height: 40px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-contact a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Formulaire */
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Carte */
+        .map-container {
+            margin-top: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Heures d'ouverture */
+        .hours-section {
+            background-color: #3498db;
+            color: white;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+        
+        .hours-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hours-info h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .hours-info h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: white;
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-table td {
+            padding: 15px 0;
+        }
+        
+        .hours-table td:first-child {
+            font-weight: 500;
+        }
+        
+        .hours-table td:last-child {
+            text-align: right;
+        }
+        
+        .emergency-contact {
+            background-color: white;
+            color: var(--dark-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .emergency-icon {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .emergency-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .emergency-contact p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .emergency-phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .emergency-phone:hover {
+            color: #c0392b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 80px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hours-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .emergency-contact {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <h1>Contactez-nous</h1>
+        <ul class="breadcrumb">
+            <li><a href="index.html">Accueil</a></li>
+            <li>Contact</li>
+        </ul>
+    </header>
+    
+    <main class="container">
+        <h2 class="section-title">Prenez Contact Avec Notre Équipe</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: #555;">
+            Que vous ayez une question sur nos services, besoin d'un devis ou simplement envie d'en savoir plus 
+            sur ce que nous pouvons faire pour vous, notre équipe est à votre écoute.
+        </p>
+        
+        <div class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informations de contact</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Adresse</h4>
+                            <p>12 Rue des Composants, 75000 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Téléphone</h4>
+                            <a href="tel:+33123456789">01 23 45 67 89</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <a href="mailto:contactsogetec@gmail.com">contactsogetec@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="demande-devis">Demande de devis</option>
+                                <option value="support-technique">Support technique</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.99144060821!2d2.292292615509614!3d48.85837360866186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1623258136844!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Section Heures d'Ouverture -->
+    <section class="hours-section">
+        <div class="hours-container">
+            <div class="hours-info">
+                <h2>Heures d'Ouverture</h2>
+                <table class="hours-table">
+                    <tr>
+                        <td>Lundi - Vendredi</td>
+                        <td>8:00 - 18:00</td>
+                    </tr>
+                    <tr>
+                        <td>Samedi</td>
+                        <td>9:00 - 13:00</td>
+                    </tr>
+                    <tr>
+                        <td>Dimanche</td>
+                        <td>Fermé</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="emergency-contact">
+                <div class="emergency-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Urgence Technique</h3>
+                <p>Pour toute urgence technique en dehors des heures d'ouverture, notre service d'intervention est disponible 24h/24.</p>
+                <a href="tel:+33123456789" class="emergency-phone">01 23 45 67 89</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre fournisseur de matériel électronique professionnel depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">SOGETEC SA</a>
+                <a href="services.html">Services techniques</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

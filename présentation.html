@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGETEC - Présentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles pour le menu déroulant */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #3498db;
+            min-width: 250px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            max-height: 500px;
+            padding: 15px 0;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            color: #f8f9fa !important;
+            padding: 12px 25px !important;
+            display: block !important;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #3498db;
+            padding-left: 30px !important;
+            color: #ffffff !important;
+        }
+
+        .dropdown-menu a.active {
+            border-left: 4px solid #db6934;
+            background: #3498db;
+        }
+
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: #2c3e50;
+        }
+
+        .dropdown:hover > a::after {
+            transform: rotate(180deg);
+            color: #3498db;
+        }
+
+        /* Adaptation de la navigation principale */
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #2c3e50 !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #3498db !important;
+            text-decoration: none;
+        }
+
+        /* Effet de soulignement animé */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Couleurs thématiques */
+        :root {
+            --primary-color: #0086a7;
+            --secondary-color: #685ca9;
+            --accent-color: #e7e5e7;
+            --dark-color: #092647e5;
+            --light-color: #f5f5f5ec;
+        }
+        
+        /* Header avec image de fond */
+        .presentation-header {
+            position: relative;
+            color: white;
+            height: 400px;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .presentation-header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .presentation-header-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: rgba(52, 152, 219, 0.9);
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Section Présentation */
+        .presentation-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+        }
+        
+        .presentation-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .presentation-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .presentation-text h3 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .presentation-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .presentation-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .presentation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .presentation-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Section Valeurs */
+        .values-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 3px solid #3498db;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        /* Section Équipe */
+        .team-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .member-position {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #3498db;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .presentation-header {
+                height: 300px;
+            }
+            
+            .presentation-header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .presentation-header-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .presentation-content {
+                flex-direction: column;
+            }
+            
+            .presentation-image {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="presentation-header">
+        <nav>
+            <div class="logo">SOGE<span>TEC</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li class="dropdown">
+                    <a href="présentation.html">SOGETEC SA</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="présentation.html" class="active">Présentation</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="strategie.html">Notre Stratégie et Force</a></li>
+                        <li><a href="politique.html">Politique et Anti-corruption</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="realisations.html">REALISATIONS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="presentation-header-content">
+            <h1>Qui sommes-nous ?</h1>
+            <p>Découvrez SOGETEC, leader dans le domaine des solutions électriques et technologiques innovantes depuis 2005.</p>
+        </div>
+    </header>
+    
+    <!-- Section Présentation -->
+    <section class="presentation-section">
+        <div class="presentation-container">
+            <h2 class="section-title">NOTRE ENTREPRISE</h2>
+            
+            <div class="presentation-content">
+                <div class="presentation-text">
+                    <h3>Une expertise reconnue</h3>
+                    <p>Fondée en 2005, SOGETEC SA s'est rapidement imposée comme un acteur majeur dans le domaine des solutions électriques et technologiques en Afrique. Notre entreprise a débuté avec une petite équipe de passionnés et compte aujourd'hui plus de 150 collaborateurs répartis dans 5 pays.</p>
+                    
+                    <p>Spécialisés à l'origine dans la distribution de matériel électrique professionnel, nous avons progressivement élargi nos compétences pour proposer des solutions complètes incluant la conception, l'installation et la maintenance de systèmes électriques avancés.</p>
+                    
+                    <h3>Notre engagement</h3>
+                    <p>Chez SOGETEC, nous croyons que la technologie doit servir le développement durable et l'amélioration des conditions de vie. C'est pourquoi nous nous engageons à fournir des solutions qui allient performance énergétique, respect de l'environnement et accessibilité économique.</p>
+                    
+                    <p>Notre approche client-centrée nous permet de comprendre les besoins spécifiques de chaque projet et d'y apporter des réponses sur mesure, garantissant ainsi satisfaction et pérennité des installations.</p>
+                </div>
+                
+                <div class="presentation-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Équipe SOGETEC">
+                </div>
+            </div>
+            
+            <div class="presentation-content reverse">
+                <div class="presentation-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bureaux SOGETEC">
+                </div>
+                
+                <div class="presentation-text">
+                    <h3>Notre croissance</h3>
+                    <p>Depuis notre création, nous avons connu une croissance soutenue, multipliant par 10 notre chiffre d'affaires en 15 ans d'activité. Cette performance repose sur plusieurs facteurs clés :</p>
+                    
+                    <ul style="margin: 20px 0; padding-left: 20px;">
+                        <li>Investissement constant dans la formation de nos équipes</li>
+                        <li>Partenariats stratégiques avec les leaders technologiques mondiaux</li>
+                        <li>Innovation permanente dans nos solutions et services</li>
+                        <li>Approche qualité certifiée ISO 9001 depuis 2012</li>
+                    </ul>
+                    
+                    <h3>Perspectives d'avenir</h3>
+                    <p>Face aux défis énergétiques et technologiques du continent africain, SOGETEC se positionne comme un acteur clé de la transition énergétique. Nos projets futurs incluent le développement de solutions smart grid et la mise en place de centres de formation techniques dans plusieurs pays.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Valeurs -->
+    <section class="values-section">
+        <div class="presentation-container">
+            <h2 class="section-title">NOS VALEURS</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="value-title">Excellence</h3>
+                    <p>Nous nous engageons à fournir des produits et services de la plus haute qualité, répondant aux normes internationales les plus exigeantes.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p>La recherche et le développement sont au cœur de notre stratégie pour anticiper les besoins futurs de nos clients.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-title">Partage</h3>
+                    <p>Nous croyons au partage des connaissances et au développement des compétences locales pour un impact durable.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title">Durabilité</h3>
+                    <p>Toutes nos solutions intègrent une dimension environnementale pour minimiser leur impact écologique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Équipe -->
+    <section class="team-section">
+        <div class="presentation-container">
+            <h2 class="section-title">NOTRE ÉQUIPE DIRIGEANTE</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Directeur Général">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Jean Koffi</h4>
+                        <p class="member-position">Directeur Général</p>
+                        <p>Fondateur de SOGETEC, ingénieur électrique avec 25 ans d'expérience.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Directrice Technique">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Amina Diallo</h4>
+                        <p class="member-position">Directrice Technique</p>
+                        <p>Spécialiste des systèmes électriques intelligents, MBA en gestion de projet.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Directeur Commercial">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Samuel Gbédji</h4>
+                        <p class="member-position">Directeur Commercial</p>
+                        <p>15 ans d'expérience dans le développement commercial en Afrique.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Directrice Financière">
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name">Fatou Ndiaye</h4>
+                        <p class="member-position">Directrice Financière</p>
+                        <p>Expert-comptable diplômée, gestionnaire rigoureuse des ressources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>SOGETEC</h3>
+                <p>Votre partenaire en solutions électriques et technologiques innovantes depuis 2005. Qualité, expertise et service client au cœur de notre métier.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="index.html">Accueil</a>
+                <a href="présentation.html">Présentation</a>
+                <a href="services.html">Nos services</a>
+                <a href="#">Conditions générales</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Rue des Composants, 75000 Paris</p>
+                <p><i class="fas fa-phone"></i> 01 23 45 67 89</p>
+                <p><i class="fas fa-envelope"></i> contactsogetec@gmail.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SOGETEC. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
